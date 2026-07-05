@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ho Chi Minh City — 31 Jul to 3 Aug</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --jade:#1F4A3D;
+    --jade-deep:#12302A;
+    --gold:#B8863B;
+    --gold-light:#E8D9B5;
+    --paper:#FAF7F0;
+    --paper-card:#FFFFFF;
+    --ink:#22261F;
+    --ink-soft:#5C6259;
+    --line:#E4DFD1;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    font-size:13.5px;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 40px;}
+
+  header.hero{
+    background:var(--jade);
+    color:var(--paper);
+    padding:28px 20px 22px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:4px;
+    background:repeating-linear-gradient(90deg,var(--gold) 0 14px, transparent 14px 20px);
+    opacity:0.9;
+  }
+  .eyebrow{
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin:0 0 8px;
+  }
+  h1.title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:28px;
+    line-height:1.15;
+    margin:0 0 8px;
+  }
+  .subdate{
+    font-size:13px;
+    color:var(--gold-light);
+    margin:0;
+  }
+
+  .day{margin-top:32px;}
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    background:var(--jade-deep);
+    color:var(--paper);
+    padding:11px 16px;
+    border-radius:8px 8px 0 0;
+  }
+  .day-badge{
+    font-family:'Fraunces',serif;
+    font-size:13px;
+    color:var(--gold-light);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .day-title{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    font-weight:500;
+    margin:0;
+    flex:1;
+  }
+  .day-date{
+    font-size:11.5px;
+    color:var(--gold-light);
+    white-space:nowrap;
+  }
+
+  table.itin{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-top:none;
+    border-radius:0 0 8px 8px;
+    overflow:hidden;
+    table-layout:fixed;
+  }
+  table.itin th{
+    text-align:left;
+    font-family:'Fraunces',serif;
+    font-size:13px;
+    font-weight:500;
+    color:var(--jade-deep);
+    padding:10px 14px 8px;
+    border-bottom:1.5px solid var(--jade);
+    background:#F3EEE0;
+  }
+  table.itin td{
+    vertical-align:top;
+    padding:12px 14px 16px;
+    border-right:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink);
+  }
+  table.itin td:last-child{border-right:none;}
+
+  .block{margin-bottom:12px;}
+  .block:last-child{margin-bottom:0;}
+  .block-label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-weight:600;
+    color:var(--jade-deep);
+    margin-bottom:4px;
+    font-size:12.5px;
+  }
+  ul.blist{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.blist li{
+    position:relative;
+    padding-left:12px;
+    margin-bottom:3px;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+  ul.blist li::before{
+    content:"·";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+    font-weight:700;
+  }
+  ul.blist li strong{color:var(--ink);font-weight:600;}
+
+  .hotel-line{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    color:var(--jade);
+    font-weight:600;
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px dashed var(--line);
+  }
+
+  .flag{
+    display:inline-block;
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--jade);
+    background:#EAF1EC;
+    border-radius:3px;
+    padding:1px 5px;
+    margin-left:5px;
+    font-weight:600;
+    vertical-align:middle;
+  }
+
+  .price{
+    display:inline-block;
+    font-size:10.5px;
+    color:var(--gold);
+    font-weight:600;
+    margin-left:4px;
+  }
+  .price::before{content:"· ";color:var(--ink-soft);font-weight:400;}
+
+  .hop{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+    color:var(--gold);
+    font-weight:500;
+    margin:2px 0 8px 2px;
+  }
+  .hop .line{
+    flex:none;
+    width:10px;
+    height:1px;
+    background:var(--line);
+  }
+
+  details.pdrop{margin:2px 0 0;}
+  details.pdrop summary{
+    list-style:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+    color:var(--gold);
+    font-weight:500;
+  }
+  details.pdrop summary::-webkit-details-marker{display:none;}
+  details.pdrop summary .chev{
+    font-size:9px;
+    transition:transform 0.15s ease;
+  }
+  details.pdrop[open] summary .chev{transform:rotate(90deg);}
+  details.pdrop .pdrop-body{
+    margin:4px 0 2px 12px;
+    padding:4px 8px;
+    background:#F3EEE0;
+    border-radius:5px;
+  }
+  details.pdrop a{
+    font-size:10.5px;
+    color:var(--jade);
+    font-weight:500;
+    text-decoration:none;
+  }
+  details.pdrop a:hover{text-decoration:underline;}
+
+  input.stopcb{
+    width:13px;
+    height:13px;
+    margin:0 6px 0 0;
+    vertical-align:middle;
+    accent-color:var(--jade);
+    cursor:pointer;
+  }
+
+  .route-summary{
+    margin-top:10px;
+    background:var(--jade-deep);
+    border-radius:8px;
+    padding:10px 14px;
+  }
+  .route-summary .rs-title{
+    font-family:'Fraunces',serif;
+    font-size:12px;
+    color:var(--gold-light);
+    margin:0 0 6px;
+  }
+  .route-summary .rs-row{
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    font-size:11px;
+    color:var(--paper);
+    padding:2px 0;
+  }
+  .route-summary .rs-row .rs-mode{color:var(--gold-light);white-space:nowrap;}
+  .route-summary .rs-price{color:var(--gold);font-weight:600;}
+  .route-summary .rs-empty{font-size:11px;color:var(--gold-light);}
+
+  .note-strip{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    background:#F1EEE3;
+    border-left:3px solid var(--gold);
+    padding:8px 12px;
+    border-radius:0 6px 6px 0;
+    margin-top:10px;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:36px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  footer .stamp{
+    font-family:'Fraunces',serif;
+    color:var(--gold);
+    font-size:13px;
+    margin-bottom:3px;
+  }
+
+  @media (max-width:760px){
+    table.itin, table.itin thead, table.itin tbody, table.itin th, table.itin td, table.itin tr{display:block;width:100%;}
+    table.itin th{border-bottom:none;padding:10px 14px 4px;}
+    table.itin td{border-right:none;border-bottom:1px solid var(--line);padding:6px 14px 14px;}
+    table.itin td:last-child{border-bottom:none;}
+    table.itin th:not(:first-child){display:none;}
+    table.itin td:not(:first-child)::before{
+      content:attr(data-col);
+      display:block;
+      font-family:'Fraunces',serif;
+      font-size:12.5px;
+      color:var(--jade-deep);
+      font-weight:500;
+      padding:10px 0 6px;
+      border-top:1.5px solid var(--jade);
+      margin-top:6px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">Becca &amp; friend · Ho Chi Minh City</p>
+  <h1 class="title">Sài Gòn, 4 days &amp; 3 nights</h1>
+  <p class="subdate">31 July — 3 August</p>
+  <p style="font-size:10px;color:var(--gold-light);margin:6px 0 0;">🚶 walk · 🚗 ride — estimates, traffic varies</p>
+</header>
+
+<div class="wrap">
+
+  <!-- DAY 1 -->
+  <section class="day">
+    <div class="day-head">
+      <span class="day-badge">Day 1</span>
+      <h2 class="day-title">D3 — arrival, café &amp; romantic start</h2>
+      <span class="day-date">Thu 31 Jul</span>
+    </div>
+    <div class="route-summary" data-day="1"></div>
+    <table class="itin">
+      <thead>
+        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-col="Morning">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-1" data-day="1" data-hop="0" data-mode="walk" data-label="Arrive SGN"> <strong>Arrive SGN <strong>10:00</strong></strong></li>
+                <li><input type="checkbox" class="stopcb" id="d1-2" data-day="1" data-hop="25" data-mode="ride" data-label="Transfer to D3 (Mai House)"> <strong>Transfer to D3 (Mai House)</strong></li>
+                <li><input type="checkbox" class="stopcb" id="d1-3" data-day="1" data-hop="0" data-mode="walk" data-label="Check-in / rest"> <strong>Check-in / rest</strong></li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Afternoon">
+            <div class="block">
+              <div class="block-label">D3 local food musts <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick a few — swap for brunch, or after)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-4" data-day="1" data-hop="8" data-mode="walk" data-label="Bánh Xèo 46A" data-price="~RM12–23"> <strong>Bánh Xèo 46A</strong> <span style="color:var(--ink-soft);font-weight:400;">(46A Đinh Công Tráng — the crispy pancake everyone travels to D3 for)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-5" data-day="1" data-hop="0" data-mode="walk" data-label="Phở Hòa Pasteur" data-price="~RM14–19"> <strong>Phở Hòa Pasteur</strong> <span style="color:var(--ink-soft);font-weight:400;">(260C Pasteur — Bib Gourmand, since 1968, arguably the city's best pho)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-6" data-day="1" data-hop="0" data-mode="walk" data-label="Tân Định Market street food" data-price="~RM5–9/dish"> <strong>Tân Định Market street food</strong> <span style="color:var(--ink-soft);font-weight:400;">(by the pink church — bún riêu, sườn nướng, chè)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-7" data-day="1" data-hop="0" data-mode="walk" data-label="Hủ Tiếu Nam Vang — Hồng Phát" data-price="~RM9–14"> <strong>Hủ Tiếu Nam Vang — Hồng Phát</strong> <span style="color:var(--ink-soft);font-weight:400;">(391 Võ Văn Tần — Cambodian-style clear noodle soup)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Brunch — D3 cafés</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-8" data-day="1" data-hop="5" data-mode="walk" data-label="Hummingbird Café" data-price="~RM23–34"> <strong>Hummingbird Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(Western brunch + coffee)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-9" data-day="1" data-hop="0" data-mode="walk" data-label="The Melbourne Café" data-price="~RM23–34"> <strong>The Melbourne Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(full brunch)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-10" data-day="1" data-hop="0" data-mode="walk" data-label="Oromia Café" data-price="~RM23–34"> <strong>Oromia Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(fusion brunch + garden vibe)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Boutique shopping — D3</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-11" data-day="1" data-hop="5" data-mode="walk" data-label="Dear José"> <strong>Dear José</strong> <span style="color:var(--ink-soft);font-weight:400;">(minimalist fashion)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d1-12" data-day="1" data-hop="0" data-mode="walk" data-label="Huong Boutique"> <strong>Huong Boutique</strong> <span style="color:var(--ink-soft);font-weight:400;">(feminine style)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-13" data-day="1" data-hop="10" data-mode="ride" data-label="Dapao Concept – Cố Đô" data-price="~RM8–11"> <strong>Dapao Concept – Cố Đô</strong> <span style="color:var(--ink-soft);font-weight:400;">(photo café stop)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Dapao+Concept+Co+Do+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Night">
+            <div class="block">
+              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-14" data-day="1" data-hop="10" data-mode="ride" data-label="Cục Gạch Quán*" data-price="~RM62–93/person"> <strong>Cục Gạch Quán*</strong> <span style="color:var(--ink-soft);font-weight:400;">(Vietnamese home-style, colonial house + garden)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Cuc+Gach+Quan+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d1-15" data-day="1" data-hop="8" data-mode="ride" data-label="Social Club Rooftop" data-price="~RM23–39/drink"> <strong>Social Club Rooftop</strong> <span style="color:var(--ink-soft);font-weight:400;">(D3 sunset drinks)</span></li>
+              </ul>
+            </div>
+            <div class="hotel-line">✦ Stay: D3 — Mai House</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </section>
+
+  <!-- DAY 2 -->
+  <section class="day">
+    <div class="day-head">
+      <span class="day-badge">Day 2</span>
+      <h2 class="day-title">D3 → D1 — city attractions</h2>
+      <span class="day-date">Fri 1 Aug</span>
+    </div>
+    <div class="route-summary" data-day="2"></div>
+    <table class="itin">
+      <thead>
+        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-col="Morning">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d2-16" data-day="2" data-hop="0" data-mode="walk" data-label="Breakfast at hotel (D3)"> <strong>Breakfast at hotel (D3)</strong></li>
+                <li><input type="checkbox" class="stopcb" id="d2-16b" data-day="2" data-hop="8" data-mode="walk" data-price="~RM7–15" data-label="Bánh Mì Hòa Mã"> <strong>Bánh Mì Hòa Mã</strong> <span style="color:var(--ink-soft);font-weight:400;">(local breakfast option — 53 Cao Thắng, D3, banh mi ốp la, since 1958)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d2-17" data-day="2" data-hop="0" data-mode="walk" data-label="Check-out"> <strong>Check-out</strong></li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Afternoon">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d2-18" data-day="2" data-hop="20" data-mode="ride" data-label="Transfer to D1"> <strong>Transfer to D1</strong></li>
+                <li><input type="checkbox" class="stopcb" id="d2-19" data-day="2" data-hop="0" data-mode="walk" data-label="Check in — Fusion Original Saigon Centre"> <strong>Check in — Fusion Original Saigon Centre</strong> <span style="color:var(--ink-soft);font-weight:400;">(before 3pm, right after checkout — drop bags first)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Attractions — D1 cluster</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d2-20" data-day="2" data-hop="8" data-mode="ride" data-label="Independence Palace" data-price="~RM6 entry"> <strong>Independence Palace</strong>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Independence+Palace+Ho+Chi+Minh+City" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+                <li><input type="checkbox" class="stopcb" id="d2-21" data-day="2" data-hop="0" data-mode="walk" data-label="Central Post Office" data-price="free"> <strong>Central Post Office</strong>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Saigon+Central+Post+Office" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+                <li><input type="checkbox" class="stopcb" id="d2-22" data-day="2" data-hop="0" data-mode="walk" data-label="Notre-Dame Cathedral" data-price="free"> <strong>Notre-Dame Cathedral</strong> <span style="color:var(--ink-soft);font-weight:400;">(photo stop, check ahead, under renovation)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Notre+Dame+Cathedral+Saigon" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Coffee — D1</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d2-23" data-day="2" data-hop="12" data-mode="walk" data-label="The Workshop Coffee" data-price="~RM11–16"> <strong>The Workshop Coffee</strong></li>
+                <li><input type="checkbox" class="stopcb" id="d2-24" data-day="2" data-hop="0" data-mode="walk" data-label="L'Usine" data-price="~RM14–23"> <strong>L'Usine</strong> <span style="color:var(--ink-soft);font-weight:400;">(café + boutique store)</span></li>
+              </ul>
+            </div>
+            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre / Vincom Center — both a few min from the hotel</p>
+          </td>
+          <td data-col="Night">
+            <div class="block">
+              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d2-25" data-day="2" data-hop="12" data-mode="ride" data-label="Mặn Mòi" data-price="~RM23–47/person"> <strong>Mặn Mòi</strong> <span style="color:var(--ink-soft);font-weight:400;">or</span> <strong>Bếp Mẹ Ìn</strong> <span style="color:var(--ink-soft);font-weight:400;">(casual local, both close to D1)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>Mặn Mòi photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Man+Moi+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                  <details class="pdrop"><summary><span class="chev">▸</span>Bếp Mẹ Ìn photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Bep+Me+In+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+              </ul>
+            </div>
+            <div class="hotel-line">✦ Stay: D1 — Fusion Original</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note-strip">Check-in moved earlier: bags go straight to Fusion Original right after the D3 checkout, before sightseeing — so you're not lugging suitcases around Independence Palace or the mall. Dinner also moved off the Thảo Điền route — Mặn Mòi / Bếp Mẹ Ìn are both a short trip from the D1 hotel. The Deck Saigon shifts to Day 3 night instead, once you're settled and unencumbered.</p>
+      </section>
+
+  <!-- DAY 3 -->
+  <section class="day">
+    <div class="day-head">
+      <span class="day-badge">Day 3</span>
+      <h2 class="day-title">D1 — shopping, spa &amp; The Deck</h2>
+      <span class="day-date">Sat 2 Aug</span>
+    </div>
+    <div class="route-summary" data-day="3"></div>
+    <table class="itin">
+      <thead>
+        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-col="Morning">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-25b" data-day="3" data-hop="8" data-mode="walk" data-price="~RM3–6" data-label="Xôi Gà Number One"> <strong>Xôi Gà Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(local breakfast option — 15 Nguyễn Trung Trực, D1, sticky rice chicken, Michelin Selected)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-26" data-day="3" data-hop="8" data-mode="walk" data-label="Oasis Café" data-price="~RM8–12"> <strong>Oasis Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(D1 — aesthetic start)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Shopping — market</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-27" data-day="3" data-hop="10" data-mode="walk" data-label="Ben Thanh Market" data-price="free entry"> <strong>Ben Thanh Market</strong> <span style="color:var(--ink-soft);font-weight:400;">(souvenirs + local goods)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Ben+Thanh+Market+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+                <li><input type="checkbox" class="stopcb" id="d3-28" data-day="3" data-hop="0" data-mode="walk" data-label="Saigon Square"> <strong>Saigon Square</strong> <span style="color:var(--ink-soft);font-weight:400;">(budget fashion)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-29" data-day="3" data-hop="3" data-mode="walk" data-label="Little Hanoi Egg Coffee" data-price="~RM6–8"> <strong>Little Hanoi Egg Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(212 Lê Lai, D1 — order: egg coffee, their famous specialty)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Quick tastes — right at Ben Thanh <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick 1–2)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-30" data-day="3" data-hop="5" data-mode="walk" data-label="Bún Riêu Gánh" data-price="~RM9"> <strong>Bún Riêu Gánh</strong> <span style="color:var(--ink-soft);font-weight:400;">(4 Phan Bội Châu — legendary crab noodle soup, 40+ years)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-31" data-day="3" data-hop="0" data-mode="walk" data-label="Bánh Canh Cua – Sạp 1301" data-price="~RM9–23"> <strong>Bánh Canh Cua – Sạp 1301</strong> <span style="color:var(--ink-soft);font-weight:400;">(inside the market — thick crab noodle soup)</span></li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Afternoon">
+            <div class="block">
+              <div class="block-label">Shopping — streetwear + boutique zone</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-32" data-day="3" data-hop="10" data-mode="walk" data-label="The New Playground"> <strong>The New Playground</strong> <span style="color:var(--ink-soft);font-weight:400;">(Vietnamese local fashion brands)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-33" data-day="3" data-hop="0" data-mode="walk" data-label="Lê Thánh Tôn Street"> <strong>Lê Thánh Tôn Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(boutiques walk)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Shopping — local brand street</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-34" data-day="3" data-hop="10" data-mode="ride" data-label="Nguyễn Trãi Street"> <strong>Nguyễn Trãi Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(D1/D5 — the main strip for Vietnamese labels; look up, many shops are on upper floors, not just street level)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-35" data-day="3" data-hop="0" data-mode="walk" data-label="Libé"> <strong>Libé</strong> <span style="color:var(--ink-soft);font-weight:400;">(local, Aritzia-style dresses, good quality)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Optional café</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-36" data-day="3" data-hop="10" data-mode="ride" data-label="Dapao Café" data-price="~RM8–11"> <strong>Dapao Café</strong> <span style="color:var(--ink-soft);font-weight:400;">or</span> <strong>Pờ Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(Cafe Apartment, 42 Nguyễn Huệ, 8th floor rear wing — order: salt coffee, retro post-war vibe)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Refresh</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-37" data-day="3" data-hop="10" data-mode="ride" data-label="Five Boys Number One" data-price="~RM6–7"> <strong>Five Boys Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(84 Bùi Viện — famous fresh fruit smoothies, no added ice/sugar)</span></li>
+              </ul>
+            </div>
+            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre — nearby if you want a final mall stop</p>
+          </td>
+          <td data-col="Night">
+            <div class="block">
+              <div class="block-label">Spa <span style="color:var(--ink-soft);font-weight:400;">(choose on the day — wrap up by ~4:30pm to make sunset)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-38" data-day="3" data-hop="15" data-mode="ride" data-label="Sen Trắng Spa" data-price="~RM78–116"> <strong>Sen Trắng Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(relaxation, local, soft vibe)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-39" data-day="3" data-hop="0" data-mode="walk" data-label="LaBoho Spa" data-price="~RM47–186"> <strong>LaBoho Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(aesthetic, premium head spa)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Dinner highlight — sunset</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-40" data-day="3" data-hop="20" data-mode="ride" data-label="The Deck Saigon" data-price="~RM85–215/person"> <strong>The Deck Saigon</strong> <span style="color:var(--ink-soft);font-weight:400;">(Thảo Điền — aim to arrive ~5:30pm for sunset over the river, dinner after; seafood / fusion / cocktails)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d3-41" data-day="3" data-hop="20" data-mode="ride" data-label="Nguyễn Huệ Walking Street" data-price="free"> <strong>Nguyễn Huệ Walking Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(night vibe — if energy allows after Thảo Điền)</span>
+                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Nguyen+Hue+Walking+Street+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
+                </li>
+              </ul>
+            </div>
+            <div class="hotel-line">✦ Stay: D1 — Fusion Original</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </section>
+
+  <!-- DAY 4 -->
+  <section class="day">
+    <div class="day-head">
+      <span class="day-badge">Day 4</span>
+      <h2 class="day-title">Departure</h2>
+      <span class="day-date">Sun 3 Aug</span>
+    </div>
+    <div class="route-summary" data-day="4"></div>
+    <table class="itin">
+      <thead>
+        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-col="Morning">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d4-42" data-day="4" data-hop="0" data-mode="walk" data-label="Breakfast at hotel (D1)"> <strong>Breakfast at hotel (D1)</strong></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d4-43" data-day="4" data-hop="10" data-mode="ride" data-label="Bánh Mì Huỳnh Hoa" data-price="~RM8–10"> <strong>Bánh Mì Huỳnh Hoa</strong> <span style="color:var(--ink-soft);font-weight:400;">(26 Lê Thị Riêng — famous banh mi, grab-and-go for the road)</span></li>
+              </ul>
+            </div>
+            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre — right by the hotel, for any last bits</p>
+          </td>
+          <td data-col="Afternoon">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d4-44" data-day="4" data-hop="0" data-mode="walk" data-label="Lunch"> <strong>Lunch</strong> <span style="color:var(--ink-soft);font-weight:400;">(light meal — phở / rice / café food)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d4-45" data-day="4" data-hop="35" data-mode="ride" data-label="Transfer to airport"> <strong>Transfer to airport</strong> <span style="color:var(--ink-soft);font-weight:400;">(~1:30 PM)</span></li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Night">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="d4-46" data-day="4" data-hop="0" data-mode="walk" data-label="Flight"> <strong>Flight <strong>16:40</strong></strong></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </section>
+
+  <p style="font-size:11px;color:var(--ink-soft);margin-top:20px;">* tentative — likely pick, not yet confirmed</p>
+
+  <footer>
+    <p class="stamp">Sài Gòn</p>
+    <p>4 days · 3 nights · made for Becca</p>
+  </footer>
+
+</div>
+
+<script>
+function renderDay(day){
+  var box = document.querySelector('.route-summary[data-day="' + day + '"]');
+  if(!box) return;
+  var cbs = Array.prototype.slice.call(document.querySelectorAll('.stopcb[data-day="' + day + '"]'));
+  var rows = [];
+  var lastLabel = null;
+  var sumMin = 0;
+  var sawRide = false;
+  cbs.forEach(function(cb){
+    var hop = parseInt(cb.getAttribute('data-hop'), 10) || 0;
+    var mode = cb.getAttribute('data-mode') || 'walk';
+    sumMin += hop;
+    if(mode === 'ride') sawRide = true;
+    if(cb.checked){
+      var priceStr = cb.getAttribute('data-price');
+      var priceHtml = priceStr ? ' <span class="rs-price">' + priceStr + '</span>' : '';
+      if(lastLabel !== null){
+        var icon, text;
+        if(sumMin === 0){
+          icon = '·'; text = 'same spot';
+        } else if(sumMin <= 15 && !sawRide){
+          icon = '🚶'; text = sumMin + ' min';
+        } else {
+          icon = '🚗'; text = sumMin + ' min';
+        }
+        rows.push('<div class="rs-row"><span>' + lastLabel + ' → ' + cb.getAttribute('data-label') + priceHtml + '</span><span class="rs-mode">' + icon + ' ' + text + '</span></div>');
+      } else {
+        rows.push('<div class="rs-row"><span>📍 ' + cb.getAttribute('data-label') + priceHtml + '</span><span class="rs-mode"></span></div>');
+      }
+      lastLabel = cb.getAttribute('data-label');
+      sumMin = 0;
+      sawRide = false;
+    }
+  });
+  if(rows.length === 0){
+    box.innerHTML = '<p class="rs-title">Your route</p><p class="rs-empty">Tick a few stops to see walk/ride times between them.</p>';
+  } else {
+    box.innerHTML = '<p class="rs-title">Your route</p>' + rows.join('');
+  }
+}
+function renderAll(){
+  for(var d = 1; d <= 4; d++) renderDay(d);
+}
+document.addEventListener('change', function(e){
+  if(e.target.classList && e.target.classList.contains('stopcb')){
+    renderDay(e.target.getAttribute('data-day'));
+  }
+});
+renderAll();
+</script>
+</body>
+</html>
