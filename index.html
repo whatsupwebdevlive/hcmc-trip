@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ho Chi Minh City — 31 Jul to 3 Aug</title>
+<title>Ho Chi Minh City — Option B — 31 Jul to 3 Aug</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
 
@@ -69,6 +69,24 @@
   }
 
   .day{margin-top:32px;}
+
+  details.day-collapse{}
+  summary.day-head{
+    cursor:pointer;
+    list-style:none;
+  }
+  summary.day-head::-webkit-details-marker{display:none;}
+  summary.day-head::marker{content:"";}
+  summary.day-head::after{
+    content:"▸";
+    color:var(--gold-light);
+    font-size:13px;
+    margin-left:4px;
+    transition:transform 0.15s ease;
+  }
+  details.day-collapse[open] summary.day-head::after{
+    content:"▾";
+  }
   .day-head{
     display:flex;
     align-items:baseline;
@@ -184,62 +202,7 @@
     font-weight:600;
     vertical-align:middle;
   }
-
-  .price{
-    display:inline-block;
-    font-size:10.5px;
-    color:var(--gold);
-    font-weight:600;
-    margin-left:4px;
-  }
-  .price::before{content:"· ";color:var(--ink-soft);font-weight:400;}
-
-  .hop{
-    display:flex;
-    align-items:center;
-    gap:4px;
-    font-size:10px;
-    color:var(--gold);
-    font-weight:500;
-    margin:2px 0 8px 2px;
-  }
-  .hop .line{
-    flex:none;
-    width:10px;
-    height:1px;
-    background:var(--line);
-  }
-
-  details.pdrop{margin:2px 0 0;}
-  details.pdrop summary{
-    list-style:none;
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    font-size:10px;
-    color:var(--gold);
-    font-weight:500;
-  }
-  details.pdrop summary::-webkit-details-marker{display:none;}
-  details.pdrop summary .chev{
-    font-size:9px;
-    transition:transform 0.15s ease;
-  }
-  details.pdrop[open] summary .chev{transform:rotate(90deg);}
-  details.pdrop .pdrop-body{
-    margin:4px 0 2px 12px;
-    padding:4px 8px;
-    background:#F3EEE0;
-    border-radius:5px;
-  }
-  details.pdrop a{
-    font-size:10.5px;
-    color:var(--jade);
-    font-weight:500;
-    text-decoration:none;
-  }
-  details.pdrop a:hover{text-decoration:underline;}
+  .flag.star{color:var(--gold);background:#FBF2DC;}
 
   input.stopcb{
     width:13px;
@@ -249,6 +212,16 @@
     accent-color:var(--jade);
     cursor:pointer;
   }
+
+  a.pdroplink{
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    text-decoration:none;
+    margin-right:4px;
+    white-space:nowrap;
+  }
+  a.pdroplink:hover{text-decoration:underline;}
 
   .route-summary{
     margin-top:10px;
@@ -322,9 +295,9 @@
 <body>
 
 <header class="hero">
-  <p class="eyebrow">Becca &amp; friend · Ho Chi Minh City</p>
+  <p class="eyebrow">Becca &amp; friend · Ho Chi Minh City · Option B</p>
   <h1 class="title">Sài Gòn, 4 days &amp; 3 nights</h1>
-  <p class="subdate">31 July — 3 August</p>
+  <p class="subdate">31 July — 3 August · D1 first, then D3</p>
   <p style="font-size:10px;color:var(--gold-light);margin:6px 0 0;">🚶 walk · 🚗 ride — estimates, traffic varies</p>
 </header>
 
@@ -332,72 +305,174 @@
 
   <!-- DAY 1 -->
   <section class="day">
-    <div class="day-head">
+    <details class="day-collapse" open>
+      <summary class="day-head">
       <span class="day-badge">Day 1</span>
-      <h2 class="day-title">D3 — arrival, café &amp; romantic start</h2>
+      <h2 class="day-title">D1 — arrival &amp; a Michelin night</h2>
       <span class="day-date">Thu 31 Jul</span>
-    </div>
+    </summary>
     <div class="route-summary" data-day="1"></div>
     <table class="itin">
-      <thead>
-        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
-      </thead>
+      <thead><tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr></thead>
       <tbody>
         <tr>
           <td data-col="Morning">
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-1" data-day="1" data-hop="0" data-mode="walk" data-label="Arrive SGN"> <strong>Arrive SGN <strong>10:00</strong></strong></li>
-                <li><input type="checkbox" class="stopcb" id="d1-2" data-day="1" data-hop="25" data-mode="ride" data-label="Transfer to D3 (Mai House)"> <strong>Transfer to D3 (Mai House)</strong></li>
-                <li><input type="checkbox" class="stopcb" id="d1-3" data-day="1" data-hop="0" data-mode="walk" data-label="Check-in / rest"> <strong>Check-in / rest</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b1-1" data-day="1" data-lat="10.8188" data-lng="106.652" data-label="Arrive SGN"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Tan+Son+Nhat+Airport" target="_blank" rel="noopener">[+]</a> <strong>Arrive SGN <strong>10:00</strong></strong></li>
+                <li><input type="checkbox" class="stopcb" id="b1-2" data-day="1" data-lat="10.7715" data-lng="106.703" data-label="Transfer to D1"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Saigon+District+1+street" target="_blank" rel="noopener">[+]</a> <strong>Transfer to D1</strong> <span style="color:var(--ink-soft);font-weight:400;">— 🚗 25 min from airport</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-3" data-day="1" data-lat="10.7715" data-lng="106.703" data-label="Check-in Fusion Original"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Fusion+Original+Saigon+Centre" target="_blank" rel="noopener">[+]</a> <strong>Check-in — Fusion Original Saigon Centre</strong></li>
               </ul>
             </div>
           </td>
           <td data-col="Afternoon">
             <div class="block">
-              <div class="block-label">D3 local food musts <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick a few — swap for brunch, or after)</span></div>
+              <div class="block-label">Breakfast — local D1</div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-4" data-day="1" data-hop="8" data-mode="walk" data-label="Bánh Xèo 46A" data-price="~RM12–23"> <strong>Bánh Xèo 46A</strong> <span style="color:var(--ink-soft);font-weight:400;">(46A Đinh Công Tráng — the crispy pancake everyone travels to D3 for)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-5" data-day="1" data-hop="0" data-mode="walk" data-label="Phở Hòa Pasteur" data-price="~RM14–19"> <strong>Phở Hòa Pasteur</strong> <span style="color:var(--ink-soft);font-weight:400;">(260C Pasteur — Bib Gourmand, since 1968, arguably the city's best pho)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-6" data-day="1" data-hop="0" data-mode="walk" data-label="Tân Định Market street food" data-price="~RM5–9/dish"> <strong>Tân Định Market street food</strong> <span style="color:var(--ink-soft);font-weight:400;">(by the pink church — bún riêu, sườn nướng, chè)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-7" data-day="1" data-hop="0" data-mode="walk" data-label="Hủ Tiếu Nam Vang — Hồng Phát" data-price="~RM9–14"> <strong>Hủ Tiếu Nam Vang — Hồng Phát</strong> <span style="color:var(--ink-soft);font-weight:400;">(391 Võ Văn Tần — Cambodian-style clear noodle soup)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-3b" data-day="1" data-lat="10.7716" data-lng="106.697" data-label="Xôi Gà Number One" data-price="~RM3–6"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Xoi+Ga+Number+One+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Xôi Gà Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(if you skipped inflight food — 15 Nguyễn Trung Trực, D1, sticky rice chicken, Michelin Selected)</span></li>
               </ul>
             </div>
             <div class="block">
-              <div class="block-label">Brunch — D3 cafés</div>
+              <div class="block-label">D1 café musts <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick a few)</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-8" data-day="1" data-hop="5" data-mode="walk" data-label="Hummingbird Café" data-price="~RM23–34"> <strong>Hummingbird Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(Western brunch + coffee)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-9" data-day="1" data-hop="0" data-mode="walk" data-label="The Melbourne Café" data-price="~RM23–34"> <strong>The Melbourne Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(full brunch)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-10" data-day="1" data-hop="0" data-mode="walk" data-label="Oromia Café" data-price="~RM23–34"> <strong>Oromia Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(fusion brunch + garden vibe)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-4" data-day="1" data-lat="10.777" data-lng="106.693" data-label="Linh Cafe" data-price="~RM10–15"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Tiem+Ca+Phe+Linh+1975+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Linh Cafe</strong> <span style="color:var(--ink-soft);font-weight:400;">(1 Trương Định — vintage 1975 decor, order: salted coffee)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-5" data-day="1" data-lat="10.7776" data-lng="106.7015" data-label="Cộng Càphê" data-price="~RM6–10"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Cong+Caphe+Ly+Tu+Trong+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Cộng Càphê</strong> <span style="color:var(--ink-soft);font-weight:400;">(26 Lý Tự Trọng — war-era decor, order: coconut coffee)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-6" data-day="1" data-lat="10.7669" data-lng="106.6931" data-label="Phở Quỳnh" data-price="~RM13–17"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Pho+Quynh+Pham+Ngu+Lao+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Phở Quỳnh</strong> <span style="color:var(--ink-soft);font-weight:400;">(323 Phạm Ngũ Lão — order: phở bò kho, beef stew pho; loud, local, open late, a Saigon institution)</span></li>
               </ul>
             </div>
             <div class="block">
-              <div class="block-label">Boutique shopping — D3</div>
+              <div class="block-label">Lunch — local D1 <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick one)</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-11" data-day="1" data-hop="5" data-mode="walk" data-label="Dear José"> <strong>Dear José</strong> <span style="color:var(--ink-soft);font-weight:400;">(minimalist fashion)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d1-12" data-day="1" data-hop="0" data-mode="walk" data-label="Huong Boutique"> <strong>Huong Boutique</strong> <span style="color:var(--ink-soft);font-weight:400;">(feminine style)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-6b" data-day="1" data-lat="10.7864" data-lng="106.6912" data-label="Cơm Tấm Ba Ghiền" data-price="~RM9–12"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Com+Tam+Ba+Ghien+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Cơm Tấm Ba Ghiền</strong> <span style="color:var(--ink-soft);font-weight:400;">(84 Đặng Dung, D1 — Michelin-recognized broken rice, huge grilled pork chop)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-6c" data-day="1" data-lat="10.7654" data-lng="106.6905" data-label="Mặn Mòi" data-price="~RM23–47/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Man+Moi+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Mặn Mòi</strong> <span style="color:var(--ink-soft);font-weight:400;">(122/2 Trần Đình Xu, D1 — Bib Gourmand, open for lunch, nature-inspired interior with courtyard seating)</span></li>
               </ul>
             </div>
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-13" data-day="1" data-hop="10" data-mode="ride" data-label="Dapao Concept – Cố Đô" data-price="~RM8–11"> <strong>Dapao Concept – Cố Đô</strong> <span style="color:var(--ink-soft);font-weight:400;">(photo café stop)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Dapao+Concept+Co+Do+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
+                <li><input type="checkbox" class="stopcb" id="b1-7" data-day="1" data-lat="10.7724" data-lng="106.6982" data-label="Ben Thanh Market" data-price="free entry"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Ben+Thanh+Market+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Ben Thanh Market</strong> <span style="color:var(--ink-soft);font-weight:400;">(souvenirs + local goods)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-8" data-day="1" data-lat="10.7707" data-lng="106.6939" data-label="Little Hanoi Egg Coffee" data-price="~RM6–8"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Little+Hanoi+Egg+Coffee+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Little Hanoi Egg Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(212 Lê Lai — order: egg coffee)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-9" data-day="1" data-lat="10.7719" data-lng="106.6975" data-label="Bún Riêu Gánh" data-price="~RM9"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Bun+Rieu+Ganh+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Bún Riêu Gánh</strong> <span style="color:var(--ink-soft);font-weight:400;">(4 Phan Bội Châu — legendary crab noodle soup)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Shopping — D1 <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(after lunch)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-20" data-day="1" data-lat="10.7669" data-lng="106.6928" data-label="Nguyễn Trãi Street"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Nguyen+Trai+Street+Ho+Chi+Minh+fashion" target="_blank" rel="noopener">[+]</a> <strong>Nguyễn Trãi Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(local Vietnamese labels)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-20f" data-day="1" data-lat="10.7669" data-lng="106.6928" data-label="L'espoir Studios"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Lespoir+Studios+Nguyen+Trai+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>L'espoir Studios</strong> <span style="color:var(--ink-soft);font-weight:400;">(57 Nguyễn Trãi — same street, local fashion brand)</span></li>
+                <li><input type="checkbox" class="stopcb" id="d3-35" data-day="1" data-lat="10.7669" data-lng="106.6928" data-label="Libé"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Libé+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Libé</strong> <span style="color:var(--ink-soft);font-weight:400;">(local, Aritzia-style dresses, good quality — also on Nguyễn Trãi)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-20c" data-day="1" data-lat="10.7674" data-lng="106.6937" data-label="Lamin Apparel"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Lamin+Apparel+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Lamin Apparel</strong> <span style="color:var(--ink-soft);font-weight:400;">(35 Nguyễn Văn Tráng — just off Nguyễn Trãi, same pocket of shops — minimalist ready-to-wear)</span></li>
               </ul>
             </div>
           </td>
           <td data-col="Night">
             <div class="block">
-              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span></div>
+              <div class="block-label">Dinner <span class="flag star">Michelin 1★</span> <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick one, book ahead)</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-14" data-day="1" data-hop="10" data-mode="ride" data-label="Cục Gạch Quán*" data-price="~RM62–93/person"> <strong>Cục Gạch Quán*</strong> <span style="color:var(--ink-soft);font-weight:400;">(Vietnamese home-style, colonial house + garden)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Cuc+Gach+Quan+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
+                <li><input type="checkbox" class="stopcb" id="b1-10" data-day="1" data-lat="10.7742" data-lng="106.7043" data-label="Ănăn Saigon" data-price="~RM230–350/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Anan+Saigon+restaurant" target="_blank" rel="noopener">[+]</a> <strong>Ănăn Saigon</strong> <span style="color:var(--ink-soft);font-weight:400;">(elevated street food, near Chợ Cũ — casual room, not stuffy)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-11" data-day="1" data-lat="10.7745" data-lng="106.702" data-label="CoCo Dining"> <strong>CoCo Dining</strong> <span style="color:var(--ink-soft);font-weight:400;">(modern Vietnamese tasting menu)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-12" data-day="1" data-lat="10.7773" data-lng="106.7013" data-label="Akuna"> <strong>Akuna</strong> <span style="color:var(--ink-soft);font-weight:400;">(refined Vietnamese-French)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span> <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(local option)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b1-12b" data-day="1" data-lat="10.7726" data-lng="106.6975" data-label="Bếp Mẹ Ìn" data-price="~RM40–65/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Bep+Me+In+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Bếp Mẹ Ìn</strong> <span style="color:var(--ink-soft);font-weight:400;">(near Ben Thanh Market — cozy, feels like a home kitchen, classic family-style Vietnamese dishes)</span></li>
               </ul>
             </div>
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d1-15" data-day="1" data-hop="8" data-mode="ride" data-label="Social Club Rooftop" data-price="~RM23–39/drink"> <strong>Social Club Rooftop</strong> <span style="color:var(--ink-soft);font-weight:400;">(D3 sunset drinks)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-13" data-day="1" data-lat="10.7745" data-lng="106.7031" data-label="Nguyễn Huệ Walking Street" data-price="free"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Nguyen+Hue+Walking+Street" target="_blank" rel="noopener">[+]</a> <strong>Nguyễn Huệ Walking Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(night vibe)</span></li>
+              </ul>
+            </div>
+            <div class="hotel-line">✦ Stay: D1 — Fusion Original</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    </details>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day">
+    <details class="day-collapse">
+      <summary class="day-head">
+      <span class="day-badge">Day 2</span>
+      <h2 class="day-title">D1 by day → D3 by night</h2>
+      <span class="day-date">Fri 1 Aug</span>
+    </summary>
+    <div class="route-summary" data-day="2"></div>
+    <table class="itin">
+      <thead><tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr></thead>
+      <tbody>
+        <tr>
+          <td data-col="Morning">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-14" data-day="2" data-lat="10.7715" data-lng="106.703" data-label="Breakfast at hotel (D1)"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=hotel+breakfast+buffet" target="_blank" rel="noopener">[+]</a> <strong>Breakfast at hotel (D1)</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b2-14b" data-day="2" data-lat="10.7773" data-lng="106.7013" data-label="Phở Minh" data-price="~RM14–20"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Pho+Minh+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Phở Minh</strong> <span style="color:var(--ink-soft);font-weight:400;">(order: phở tái nạm, rare beef + brisket, plus their pâté chaud pastry — Michelin Guide, hidden alley, since 1945; closes 10am, go early)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Attractions — D1 cluster</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-15" data-day="2" data-lat="10.777" data-lng="106.6953" data-label="Independence Palace" data-price="~RM6 entry"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Independence+Palace+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Independence Palace</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b2-16" data-day="2" data-lat="10.7798" data-lng="106.6997" data-label="Central Post Office" data-price="free"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Saigon+Central+Post+Office" target="_blank" rel="noopener">[+]</a> <strong>Central Post Office</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b2-17" data-day="2" data-lat="10.7798" data-lng="106.699" data-label="Notre-Dame Cathedral" data-price="free"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Notre+Dame+Cathedral+Saigon" target="_blank" rel="noopener">[+]</a> <strong>Notre-Dame Cathedral</strong> <span style="color:var(--ink-soft);font-weight:400;">(check ahead, under renovation)</span></li>
+              </ul>
+            </div>
+          </td>
+          <td data-col="Afternoon">
+            <div class="block">
+              <div class="block-label">Coffee — D1</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-18" data-day="2" data-lat="10.7742" data-lng="106.7048" data-label="The Workshop Coffee" data-price="~RM11–16"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=The+Workshop+Coffee+Saigon" target="_blank" rel="noopener">[+]</a> <strong>The Workshop Coffee</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b2-19" data-day="2" data-lat="10.7745" data-lng="106.7031" data-label="Cafe Apartment / Pờ Coffee" data-price="~RM8–11"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=The+Cafe+Apartment+42+Nguyen+Hue" target="_blank" rel="noopener">[+]</a> <strong>Cafe Apartment / Pờ Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(42 Nguyễn Huệ — order: salt coffee)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Shopping — D1</div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b1-9b" data-day="2" data-lat="10.7691" data-lng="106.6971" data-label="Compound Garment"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Compound+Garment+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Compound Garment</strong> <span style="color:var(--ink-soft);font-weight:400;">(158/5 Nguyễn Công Trứ — streetwear, two storefronts facing each other)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b1-9c" data-day="2" data-lat="10.7735" data-lng="106.6989" data-label="Saigon Square"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Saigon+Square+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Saigon Square</strong> <span style="color:var(--ink-soft);font-weight:400;">(budget fashion)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-20b" data-day="2" data-lat="10.7757" data-lng="106.7014" data-label="Rue Miche L'Édition"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Rue+Miche+LEdition+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Rue Miche L'Édition</strong> <span style="color:var(--ink-soft);font-weight:400;">(53 Lê Thánh Tôn — curated multi-brand concept store)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-20g" data-day="2" data-lat="10.7757" data-lng="106.7014" data-label="Bún Chả Hà Nội" data-price="~RM15–20"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Bun+Cha+Ha+Noi+Le+Thanh+Ton+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Bún Chả Hà Nội</strong> <span style="color:var(--ink-soft);font-weight:400;">(26/1A Lê Thánh Tôn — order: bún chả, grilled pork with vermicelli)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Lunch — local D1 <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick one)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-17b" data-day="2" data-lat="10.7864" data-lng="106.6912" data-label="Cơm Tấm Ba Ghiền" data-price="~RM9–12"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Com+Tam+Ba+Ghien+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Cơm Tấm Ba Ghiền</strong> <span style="color:var(--ink-soft);font-weight:400;">(84 Đặng Dung, D1 — Michelin-recognized broken rice, huge grilled pork chop)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-17e" data-day="2" data-lat="10.7654" data-lng="106.6905" data-label="Mặn Mòi" data-price="~RM23–47/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Man+Moi+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Mặn Mòi</strong> <span style="color:var(--ink-soft);font-weight:400;">(122/2 Trần Đình Xu, D1 — Bib Gourmand, open for lunch, nature-inspired interior with courtyard seating)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b1-newplay" data-day="2" data-lat="10.7776" data-lng="106.7015" data-label="The New Playground"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=The+New+Playground+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>The New Playground</strong> <span style="color:var(--ink-soft);font-weight:400;">(2 branches, both near Đồng Khởi: 26 Lý Tự Trọng original, or Vincom Center Đồng Khởi B1-B2 — right across the road from each other; underground/basement mall, one indoor space with many local brands under one roof; Push Push has a corner here)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-21" data-day="2" data-lat="10.7669" data-lng="106.6931" data-label="Five Boys Number One" data-price="~RM6–7"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Five+Boys+Number+One+smoothies+Bui+Vien" target="_blank" rel="noopener">[+]</a> <strong>Five Boys Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(smoothies)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-20d" data-day="2" data-lat="10.7991" data-lng="106.6802" data-label="11 Garmentory"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=11+Garmentory+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>11 Garmentory</strong> <span style="color:var(--ink-soft);font-weight:400;">(117B Nguyễn Đình Chính, Phú Nhuận — 50+ local designers, cafe upstairs; a genuine detour, only worth it as its own dedicated stop)</span></li>
+              </ul>
+            </div>
+            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">Hang out in D1 until late afternoon, then head to D3.</p>
+          </td>
+          <td data-col="Night">
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-22" data-day="2" data-lat="10.7822" data-lng="106.6903" data-label="Transfer to D3"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=District+3+Ho+Chi+Minh+street" target="_blank" rel="noopener">[+]</a> <strong>Transfer to D3</strong> <span style="color:var(--ink-soft);font-weight:400;">(late afternoon)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-23" data-day="2" data-lat="10.7822" data-lng="106.6903" data-label="Check-in Mai House"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Mai+House+Saigon+hotel" target="_blank" rel="noopener">[+]</a> <strong>Check-in — Mai House</strong></li>
+              </ul>
+            </div>
+            <div class="block">
+              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span> / <span class="flag star">Michelin</span> <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick one)</span></div>
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-24" data-day="2" data-lat="10.79" data-lng="106.6875" data-label="Cục Gạch Quán*" data-price="~RM62–93/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Cuc+Gach+Quan+restaurant" target="_blank" rel="noopener">[+]</a> <strong>Cục Gạch Quán*</strong> <span style="color:var(--ink-soft);font-weight:400;">(home-style, colonial house + garden)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-25" data-day="2" data-lat="10.7745" data-lng="106.702" data-label="CieL"> <strong>CieL</strong> <span style="color:var(--ink-soft);font-weight:400;">(fine dining, tasting menu)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b2-26" data-day="2" data-lat="10.7745" data-lng="106.702" data-label="Upstairs"> <strong>Upstairs</strong> <span style="color:var(--ink-soft);font-weight:400;">(refined modern Vietnamese)</span></li>
+              </ul>
+            </div>
+            <div class="block">
+              <ul class="blist">
+                <li><input type="checkbox" class="stopcb" id="b2-27" data-day="2" data-lat="10.7822" data-lng="106.6903" data-label="Social Club Rooftop" data-price="~RM23–39/drink"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Social+Club+Rooftop+Saigon" target="_blank" rel="noopener">[+]</a> <strong>Social Club Rooftop</strong> <span style="color:var(--ink-soft);font-weight:400;">(D3 sunset drinks)</span></li>
               </ul>
             </div>
             <div class="hotel-line">✦ Stay: D3 — Mai House</div>
@@ -405,291 +480,204 @@
         </tr>
       </tbody>
     </table>
-      </section>
-
-  <!-- DAY 2 -->
-  <section class="day">
-    <div class="day-head">
-      <span class="day-badge">Day 2</span>
-      <h2 class="day-title">D3 → D1 — city attractions</h2>
-      <span class="day-date">Fri 1 Aug</span>
-    </div>
-    <div class="route-summary" data-day="2"></div>
-    <table class="itin">
-      <thead>
-        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-col="Morning">
-            <div class="block">
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d2-16" data-day="2" data-hop="0" data-mode="walk" data-label="Breakfast at hotel (D3)"> <strong>Breakfast at hotel (D3)</strong></li>
-                <li><input type="checkbox" class="stopcb" id="d2-16b" data-day="2" data-hop="8" data-mode="walk" data-price="~RM7–15" data-label="Bánh Mì Hòa Mã"> <strong>Bánh Mì Hòa Mã</strong> <span style="color:var(--ink-soft);font-weight:400;">(local breakfast option — 53 Cao Thắng, D3, banh mi ốp la, since 1958)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d2-17" data-day="2" data-hop="0" data-mode="walk" data-label="Check-out"> <strong>Check-out</strong></li>
-              </ul>
-            </div>
-          </td>
-          <td data-col="Afternoon">
-            <div class="block">
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d2-18" data-day="2" data-hop="20" data-mode="ride" data-label="Transfer to D1"> <strong>Transfer to D1</strong></li>
-                <li><input type="checkbox" class="stopcb" id="d2-19" data-day="2" data-hop="0" data-mode="walk" data-label="Check in — Fusion Original Saigon Centre"> <strong>Check in — Fusion Original Saigon Centre</strong> <span style="color:var(--ink-soft);font-weight:400;">(before 3pm, right after checkout — drop bags first)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <div class="block-label">Attractions — D1 cluster</div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d2-20" data-day="2" data-hop="8" data-mode="ride" data-label="Independence Palace" data-price="~RM6 entry"> <strong>Independence Palace</strong>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Independence+Palace+Ho+Chi+Minh+City" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-                <li><input type="checkbox" class="stopcb" id="d2-21" data-day="2" data-hop="0" data-mode="walk" data-label="Central Post Office" data-price="free"> <strong>Central Post Office</strong>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Saigon+Central+Post+Office" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-                <li><input type="checkbox" class="stopcb" id="d2-22" data-day="2" data-hop="0" data-mode="walk" data-label="Notre-Dame Cathedral" data-price="free"> <strong>Notre-Dame Cathedral</strong> <span style="color:var(--ink-soft);font-weight:400;">(photo stop, check ahead, under renovation)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Notre+Dame+Cathedral+Saigon" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-              </ul>
-            </div>
-            <div class="block">
-              <div class="block-label">Coffee — D1</div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d2-23" data-day="2" data-hop="12" data-mode="walk" data-label="The Workshop Coffee" data-price="~RM11–16"> <strong>The Workshop Coffee</strong></li>
-                <li><input type="checkbox" class="stopcb" id="d2-24" data-day="2" data-hop="0" data-mode="walk" data-label="L'Usine" data-price="~RM14–23"> <strong>L'Usine</strong> <span style="color:var(--ink-soft);font-weight:400;">(café + boutique store)</span></li>
-              </ul>
-            </div>
-            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre / Vincom Center — both a few min from the hotel</p>
-          </td>
-          <td data-col="Night">
-            <div class="block">
-              <div class="block-label">Dinner <span class="flag">Bib Gourmand</span></div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d2-25" data-day="2" data-hop="12" data-mode="ride" data-label="Mặn Mòi" data-price="~RM23–47/person"> <strong>Mặn Mòi</strong> <span style="color:var(--ink-soft);font-weight:400;">or</span> <strong>Bếp Mẹ Ìn</strong> <span style="color:var(--ink-soft);font-weight:400;">(casual local, both close to D1)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>Mặn Mòi photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Man+Moi+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                  <details class="pdrop"><summary><span class="chev">▸</span>Bếp Mẹ Ìn photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Bep+Me+In+restaurant+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-              </ul>
-            </div>
-            <div class="hotel-line">✦ Stay: D1 — Fusion Original</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="note-strip">Check-in moved earlier: bags go straight to Fusion Original right after the D3 checkout, before sightseeing — so you're not lugging suitcases around Independence Palace or the mall. Dinner also moved off the Thảo Điền route — Mặn Mòi / Bếp Mẹ Ìn are both a short trip from the D1 hotel. The Deck Saigon shifts to Day 3 night instead, once you're settled and unencumbered.</p>
-      </section>
+    <p class="note-strip">D1 stays the base for sightseeing and shopping all day — bags only move once, late afternoon, straight into dinner territory in D3.</p>
+  
+    </details>
+  </section>
 
   <!-- DAY 3 -->
   <section class="day">
-    <div class="day-head">
+    <details class="day-collapse">
+      <summary class="day-head">
       <span class="day-badge">Day 3</span>
-      <h2 class="day-title">D1 — shopping, spa &amp; The Deck</h2>
+      <h2 class="day-title">D3 — local food &amp; boutique day</h2>
       <span class="day-date">Sat 2 Aug</span>
-    </div>
+    </summary>
     <div class="route-summary" data-day="3"></div>
     <table class="itin">
-      <thead>
-        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
-      </thead>
+      <thead><tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr></thead>
       <tbody>
         <tr>
           <td data-col="Morning">
             <div class="block">
+              <div class="block-label">D3 local food musts <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick a few)</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-25b" data-day="3" data-hop="8" data-mode="walk" data-price="~RM3–6" data-label="Xôi Gà Number One"> <strong>Xôi Gà Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(local breakfast option — 15 Nguyễn Trung Trực, D1, sticky rice chicken, Michelin Selected)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d3-26" data-day="3" data-hop="8" data-mode="walk" data-label="Oasis Café" data-price="~RM8–12"> <strong>Oasis Café</strong> <span style="color:var(--ink-soft);font-weight:400;">(D1 — aesthetic start)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-28" data-day="3" data-lat="10.7885" data-lng="106.6899" data-label="Bánh Xèo 46A" data-price="~RM12–23"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Banh+Xeo+46A+Dinh+Cong+Trang" target="_blank" rel="noopener">[+]</a> <strong>Bánh Xèo 46A</strong> <span style="color:var(--ink-soft);font-weight:400;">(46A Đinh Công Tráng — order: bánh xèo, the crispy pancake everyone travels to D3 for)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-29" data-day="3" data-lat="10.7838" data-lng="106.6935" data-label="Phở Hòa Pasteur" data-price="~RM14–19"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Pho+Hoa+Pasteur" target="_blank" rel="noopener">[+]</a> <strong>Phở Hòa Pasteur</strong> <span style="color:var(--ink-soft);font-weight:400;">(260C Pasteur — order: phở bò, Bib Gourmand since 1968)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-30" data-day="3" data-lat="10.7906" data-lng="106.6893" data-label="Tân Định Market street food" data-price="~RM5–9/dish"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Tan+Dinh+Market+street+food" target="_blank" rel="noopener">[+]</a> <strong>Tân Định Market street food</strong> <span style="color:var(--ink-soft);font-weight:400;">(by the pink church — order: bún riêu or sườn nướng)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-30b" data-day="3" data-lat="10.7825" data-lng="106.6885" data-label="Hủ Tiếu Nam Vang — Hồng Phát" data-price="~RM9–14"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Hu+Tieu+Nam+Vang+Hong+Phat+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Hủ Tiếu Nam Vang — Hồng Phát</strong> <span style="color:var(--ink-soft);font-weight:400;">(391 Võ Văn Tần — order: hủ tiếu Nam Vang, Cambodian-style clear noodle soup)</span></li>
               </ul>
             </div>
             <div class="block">
-              <div class="block-label">Shopping — market</div>
+              <div class="block-label">Boutique shopping — D3</div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-27" data-day="3" data-hop="10" data-mode="walk" data-label="Ben Thanh Market" data-price="free entry"> <strong>Ben Thanh Market</strong> <span style="color:var(--ink-soft);font-weight:400;">(souvenirs + local goods)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Ben+Thanh+Market+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-                <li><input type="checkbox" class="stopcb" id="d3-28" data-day="3" data-hop="0" data-mode="walk" data-label="Saigon Square"> <strong>Saigon Square</strong> <span style="color:var(--ink-soft);font-weight:400;">(budget fashion)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-29" data-day="3" data-hop="3" data-mode="walk" data-label="Little Hanoi Egg Coffee" data-price="~RM6–8"> <strong>Little Hanoi Egg Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(212 Lê Lai, D1 — order: egg coffee, their famous specialty)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <div class="block-label">Quick tastes — right at Ben Thanh <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">(pick 1–2)</span></div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-30" data-day="3" data-hop="5" data-mode="walk" data-label="Bún Riêu Gánh" data-price="~RM9"> <strong>Bún Riêu Gánh</strong> <span style="color:var(--ink-soft);font-weight:400;">(4 Phan Bội Châu — legendary crab noodle soup, 40+ years)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d3-31" data-day="3" data-hop="0" data-mode="walk" data-label="Bánh Canh Cua – Sạp 1301" data-price="~RM9–23"> <strong>Bánh Canh Cua – Sạp 1301</strong> <span style="color:var(--ink-soft);font-weight:400;">(inside the market — thick crab noodle soup)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-31" data-day="3" data-lat="10.786" data-lng="106.688" data-label="Dear José"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Dear+Jose+boutique+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Dear José</strong> <span style="color:var(--ink-soft);font-weight:400;">(minimalist fashion)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-31b" data-day="3" data-lat="10.786" data-lng="106.688" data-label="Bunny Hill Concept"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Bunny+Hill+Concept+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Bunny Hill Concept</strong> <span style="color:var(--ink-soft);font-weight:400;">(hyped local designs, can get crowded)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-31c" data-day="3" data-lat="10.7864" data-lng="106.6875" data-label="Cara Club"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Cara+Club+Tran+Quang+Dieu+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Cara Club</strong> <span style="color:var(--ink-soft);font-weight:400;">(67-69 Trần Quang Diệu — trendy, youthful, affordable)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-31d" data-day="3" data-lat="10.7845" data-lng="106.6892" data-label="La Vierge"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=La+Vierge+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>La Vierge</strong> <span style="color:var(--ink-soft);font-weight:400;">(225/6 Nguyễn Đình Chiểu — elegant, feminine, sensual silhouettes)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-32" data-day="3" data-lat="10.7825" data-lng="106.6885" data-label="Huong Boutique"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Huong+Boutique+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Huong Boutique</strong> <span style="color:var(--ink-soft);font-weight:400;">(feminine style)</span></li>
               </ul>
             </div>
           </td>
           <td data-col="Afternoon">
             <div class="block">
-              <div class="block-label">Shopping — streetwear + boutique zone</div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-32" data-day="3" data-hop="10" data-mode="walk" data-label="The New Playground"> <strong>The New Playground</strong> <span style="color:var(--ink-soft);font-weight:400;">(Vietnamese local fashion brands)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d3-33" data-day="3" data-hop="0" data-mode="walk" data-label="Lê Thánh Tôn Street"> <strong>Lê Thánh Tôn Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(boutiques walk)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-33" data-day="3" data-lat="10.7855" data-lng="106.6903" data-label="Dapao Concept – Cố Đô" data-price="~RM8–11"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Dapao+Concept+Co+Do" target="_blank" rel="noopener">[+]</a> <strong>Dapao Concept – Cố Đô</strong> <span style="color:var(--ink-soft);font-weight:400;">(18 Tú Xương, Võ Thị Sáu — photo café stop)</span></li>
               </ul>
             </div>
             <div class="block">
-              <div class="block-label">Shopping — local brand street</div>
+              <div class="block-label">Spa <span style="color:var(--ink-soft);font-weight:400;">(choose on the day — wrap up by ~4:30pm for sunset)</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-34" data-day="3" data-hop="10" data-mode="ride" data-label="Nguyễn Trãi Street"> <strong>Nguyễn Trãi Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(D1/D5 — the main strip for Vietnamese labels; look up, many shops are on upper floors, not just street level)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d3-35" data-day="3" data-hop="0" data-mode="walk" data-label="Libé"> <strong>Libé</strong> <span style="color:var(--ink-soft);font-weight:400;">(local, Aritzia-style dresses, good quality)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-34" data-day="3" data-lat="10.7860" data-lng="106.6897" data-label="Sen Trắng Spa" data-price="~RM78–116"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Sen+Trang+Spa+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Sen Trắng Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(7/2 Phùng Khắc Khoan, Đa Kao — right by Tú Xương, genuinely a short walk from Dapao Concept)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-35" data-day="3" data-lat="10.7695" data-lng="106.6935" data-label="LaBoho Spa" data-price="~RM47–186"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=LaBoho+Spa+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>LaBoho Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(17 Đặng Thị Nhu, D1 — a ride from D3, not local)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-35b" data-day="3" data-lat="10.7855" data-lng="106.6895" data-label="L'Apothiquaire Spa" data-price="~RM180–350"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=LApothiquaire+Spa+District+3+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>L'Apothiquaire Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(D3 — French-style day spa in a heritage villa, calm no-pressure service, organic products)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-35c" data-day="3" data-lat="10.7860" data-lng="106.6897" data-label="The Spa Saigon" data-price="~RM60–120"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=The+Spa+Saigon+Pham+Ngoc+Thach" target="_blank" rel="noopener">[+]</a> <strong>The Spa Saigon</strong> <span style="color:var(--ink-soft);font-weight:400;">(58/6 Phạm Ngọc Thạch — boutique, near Turtle Lake, Vietnamese + Japanese Shiatsu options)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-35d" data-day="3" data-lat="10.786" data-lng="106.688" data-label="Emerald Spa" data-price="~RM70–150"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Emerald+Spa+District+3+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Emerald Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(D3 — consistently praised for relaxed, professional, no-pressure service; free tea/yogurt after)</span></li>
               </ul>
             </div>
-            <div class="block">
-              <div class="block-label">Optional café</div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-36" data-day="3" data-hop="10" data-mode="ride" data-label="Dapao Café" data-price="~RM8–11"> <strong>Dapao Café</strong> <span style="color:var(--ink-soft);font-weight:400;">or</span> <strong>Pờ Coffee</strong> <span style="color:var(--ink-soft);font-weight:400;">(Cafe Apartment, 42 Nguyễn Huệ, 8th floor rear wing — order: salt coffee, retro post-war vibe)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <div class="block-label">Refresh</div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-37" data-day="3" data-hop="10" data-mode="ride" data-label="Five Boys Number One" data-price="~RM6–7"> <strong>Five Boys Number One</strong> <span style="color:var(--ink-soft);font-weight:400;">(84 Bùi Viện — famous fresh fruit smoothies, no added ice/sugar)</span></li>
-              </ul>
-            </div>
-            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre — nearby if you want a final mall stop</p>
           </td>
           <td data-col="Night">
             <div class="block">
-              <div class="block-label">Spa <span style="color:var(--ink-soft);font-weight:400;">(choose on the day — wrap up by ~4:30pm to make sunset)</span></div>
+              <div class="block-label">Dinner highlight — sunset <span style="color:var(--ink-soft);font-weight:400;font-size:10.5px;">or</span> <span class="flag star">Michelin 1★</span></div>
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-38" data-day="3" data-hop="15" data-mode="ride" data-label="Sen Trắng Spa" data-price="~RM78–116"> <strong>Sen Trắng Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(relaxation, local, soft vibe)</span></li>
-                <li><input type="checkbox" class="stopcb" id="d3-39" data-day="3" data-hop="0" data-mode="walk" data-label="LaBoho Spa" data-price="~RM47–186"> <strong>LaBoho Spa</strong> <span style="color:var(--ink-soft);font-weight:400;">(aesthetic, premium head spa)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-36" data-day="3" data-lat="10.8044" data-lng="106.7362" data-label="The Deck Saigon" data-price="~RM85–215/person"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=The+Deck+Saigon+Thao+Dien" target="_blank" rel="noopener">[+]</a> <strong>The Deck Saigon</strong> <span style="color:var(--ink-soft);font-weight:400;">(Thảo Điền — arrive ~5:30pm for sunset)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b3-37" data-day="3" data-lat="10.78" data-lng="106.695" data-label="Long Triều"> <strong>Long Triều</strong> <span style="color:var(--ink-soft);font-weight:400;">(refined Vietnamese tasting menu)</span></li>
               </ul>
             </div>
-            <div class="block">
-              <div class="block-label">Dinner highlight — sunset</div>
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-40" data-day="3" data-hop="20" data-mode="ride" data-label="The Deck Saigon" data-price="~RM85–215/person"> <strong>The Deck Saigon</strong> <span style="color:var(--ink-soft);font-weight:400;">(Thảo Điền — aim to arrive ~5:30pm for sunset over the river, dinner after; seafood / fusion / cocktails)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d3-41" data-day="3" data-hop="20" data-mode="ride" data-label="Nguyễn Huệ Walking Street" data-price="free"> <strong>Nguyễn Huệ Walking Street</strong> <span style="color:var(--ink-soft);font-weight:400;">(night vibe — if energy allows after Thảo Điền)</span>
-                  <details class="pdrop"><summary><span class="chev">▸</span>photos</summary><div class="pdrop-body"><a href="https://www.google.com/search?tbm=isch&q=Nguyen+Hue+Walking+Street+Ho+Chi+Minh" target="_blank" rel="noopener">↗ View photos</a></div></details>
-                </li>
-              </ul>
-            </div>
-            <div class="hotel-line">✦ Stay: D1 — Fusion Original</div>
+            <div class="hotel-line">✦ Stay: D3 — Mai House</div>
           </td>
         </tr>
       </tbody>
     </table>
-      </section>
+  
+    </details>
+  </section>
 
   <!-- DAY 4 -->
   <section class="day">
-    <div class="day-head">
+    <details class="day-collapse">
+      <summary class="day-head">
       <span class="day-badge">Day 4</span>
       <h2 class="day-title">Departure</h2>
       <span class="day-date">Sun 3 Aug</span>
-    </div>
+    </summary>
     <div class="route-summary" data-day="4"></div>
     <table class="itin">
-      <thead>
-        <tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr>
-      </thead>
+      <thead><tr><th>Morning</th><th>Afternoon</th><th>Night</th></tr></thead>
       <tbody>
         <tr>
           <td data-col="Morning">
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d4-42" data-day="4" data-hop="0" data-mode="walk" data-label="Breakfast at hotel (D1)"> <strong>Breakfast at hotel (D1)</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b4-38" data-day="4" data-lat="10.7822" data-lng="106.6903" data-label="Breakfast at hotel (D3)"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=hotel+breakfast" target="_blank" rel="noopener">[+]</a> <strong>Breakfast at hotel (D3)</strong></li>
+                <li><input type="checkbox" class="stopcb" id="b4-38b" data-day="4" data-lat="10.7906" data-lng="106.6893" data-label="Tân Định Church (Pink Church)" data-price="free"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Tan+Dinh+Church+Pink+Church+Ho+Chi+Minh" target="_blank" rel="noopener">[+]</a> <strong>Tân Định Church (Pink Church)</strong> <span style="color:var(--ink-soft);font-weight:400;">(289 Hai Bà Trưng — built 1876, striking pink facade; open daily including Monday for exterior/grounds, interior only during mass times)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b4-38c" data-day="4" data-lat="10.7906" data-lng="106.6893" data-label="Cộng Càphê (Pink Church view)" data-price="~RM6–10"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Cong+Caphe+Hai+Ba+Trung+Tan+Dinh+Church" target="_blank" rel="noopener">[+]</a> <strong>Cộng Càphê (Pink Church view)</strong> <span style="color:var(--ink-soft);font-weight:400;">(274 Hai Bà Trưng, directly opposite the church — head to the 3rd floor terrace for the full view; order: coconut coffee)</span></li>
               </ul>
             </div>
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d4-43" data-day="4" data-hop="10" data-mode="ride" data-label="Bánh Mì Huỳnh Hoa" data-price="~RM8–10"> <strong>Bánh Mì Huỳnh Hoa</strong> <span style="color:var(--ink-soft);font-weight:400;">(26 Lê Thị Riêng — famous banh mi, grab-and-go for the road)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b4-39" data-day="4" data-lat="10.7706" data-lng="106.6963" data-label="Bánh Mì Huỳnh Hoa" data-price="~RM8–10"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Banh+Mi+Huynh+Hoa" target="_blank" rel="noopener">[+]</a> <strong>Bánh Mì Huỳnh Hoa</strong> <span style="color:var(--ink-soft);font-weight:400;">(26 Lê Thị Riêng — order: bánh mì đặc biệt, grab-and-go for the road)</span></li>
               </ul>
             </div>
-            <p style="font-size:10px;color:var(--ink-soft);margin:4px 0 0;">optional, skip if not fussed: Saigon Centre — right by the hotel, for any last bits</p>
           </td>
           <td data-col="Afternoon">
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d4-44" data-day="4" data-hop="0" data-mode="walk" data-label="Lunch"> <strong>Lunch</strong> <span style="color:var(--ink-soft);font-weight:400;">(light meal — phở / rice / café food)</span></li>
-              </ul>
-            </div>
-            <div class="block">
-              <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d4-45" data-day="4" data-hop="35" data-mode="ride" data-label="Transfer to airport"> <strong>Transfer to airport</strong> <span style="color:var(--ink-soft);font-weight:400;">(~1:30 PM)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b4-40" data-day="4" data-lat="10.7822" data-lng="106.6903" data-label="Lunch"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Vietnamese+lunch" target="_blank" rel="noopener">[+]</a> <strong>Lunch</strong> <span style="color:var(--ink-soft);font-weight:400;">(light meal)</span></li>
+                <li><input type="checkbox" class="stopcb" id="b4-41" data-day="4" data-lat="10.8188" data-lng="106.652" data-label="Transfer to airport"><a class="pdroplink" href="https://www.google.com/search?tbm=isch&q=Tan+Son+Nhat+Airport" target="_blank" rel="noopener">[+]</a> <strong>Transfer to airport</strong> <span style="color:var(--ink-soft);font-weight:400;">(~1:30 PM — D3 is a bit further out, allow extra time)</span></li>
               </ul>
             </div>
           </td>
           <td data-col="Night">
             <div class="block">
               <ul class="blist">
-                <li><input type="checkbox" class="stopcb" id="d4-46" data-day="4" data-hop="0" data-mode="walk" data-label="Flight"> <strong>Flight <strong>16:40</strong></strong></li>
+                <li><input type="checkbox" class="stopcb" id="b4-42" data-day="4" data-lat="10.8188" data-lng="106.652" data-label="Flight"> <strong>Flight <strong>16:40</strong></strong></li>
               </ul>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-      </section>
+  
+    </details>
+  </section>
 
-  <p style="font-size:11px;color:var(--ink-soft);margin-top:20px;">* tentative — likely pick, not yet confirmed</p>
+  <p style="font-size:11px;color:var(--ink-soft);margin-top:20px;">* tentative — likely pick, not yet confirmed. Michelin picks: confirm current address before booking, as fine-dining venues occasionally relocate.</p>
 
   <footer>
-    <p class="stamp">Sài Gòn</p>
+    <p class="stamp">Sài Gòn — Option B</p>
     <p>4 days · 3 nights · made for Becca</p>
   </footer>
 
 </div>
 
 <script>
+var clickOrder = {1:[], 2:[], 3:[], 4:[]};
+
+function haversineKm(lat1, lng1, lat2, lng2){
+  var R = 6371;
+  var dLat = (lat2-lat1) * Math.PI/180;
+  var dLng = (lng2-lng1) * Math.PI/180;
+  var a = Math.sin(dLat/2)*Math.sin(dLat/2) +
+          Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*
+          Math.sin(dLng/2)*Math.sin(dLng/2);
+  var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R*c;
+}
+
 function renderDay(day){
   var box = document.querySelector('.route-summary[data-day="' + day + '"]');
   if(!box) return;
-  var cbs = Array.prototype.slice.call(document.querySelectorAll('.stopcb[data-day="' + day + '"]'));
+  var order = clickOrder[day];
+  if(order.length === 0){
+    box.innerHTML = '<p class="rs-title">Your route</p><p class="rs-empty">Tick stops in the order you plan to visit them — the route updates to match.</p>';
+    return;
+  }
   var rows = [];
-  var lastLabel = null;
-  var sumMin = 0;
-  var sawRide = false;
-  cbs.forEach(function(cb){
-    var hop = parseInt(cb.getAttribute('data-hop'), 10) || 0;
-    var mode = cb.getAttribute('data-mode') || 'walk';
-    sumMin += hop;
-    if(mode === 'ride') sawRide = true;
-    if(cb.checked){
-      var priceStr = cb.getAttribute('data-price');
-      var priceHtml = priceStr ? ' <span class="rs-price">' + priceStr + '</span>' : '';
-      if(lastLabel !== null){
-        var icon, text;
-        if(sumMin === 0){
-          icon = '·'; text = 'same spot';
-        } else if(sumMin <= 15 && !sawRide){
-          icon = '🚶'; text = sumMin + ' min';
-        } else {
-          icon = '🚗'; text = sumMin + ' min';
-        }
-        rows.push('<div class="rs-row"><span>' + lastLabel + ' → ' + cb.getAttribute('data-label') + priceHtml + '</span><span class="rs-mode">' + icon + ' ' + text + '</span></div>');
+  order.forEach(function(stop, i){
+    var priceHtml = stop.price ? ' <span class="rs-price">' + stop.price + '</span>' : '';
+    if(i === 0){
+      rows.push('<div class="rs-row"><span>📍 ' + stop.label + priceHtml + '</span><span class="rs-mode"></span></div>');
+    } else {
+      var prev = order[i-1];
+      var distKm = haversineKm(prev.lat, prev.lng, stop.lat, stop.lng);
+      var icon, text;
+      if(distKm < 0.05){
+        icon = '·'; text = 'same spot';
+      } else if(distKm <= 1.3){
+        var mins = Math.max(3, Math.round(distKm / 4.2 * 60));
+        icon = '🚶'; text = mins + ' min';
       } else {
-        rows.push('<div class="rs-row"><span>📍 ' + cb.getAttribute('data-label') + priceHtml + '</span><span class="rs-mode"></span></div>');
+        var mins = Math.max(5, Math.round(distKm / 18 * 60));
+        icon = '🚗'; text = mins + ' min';
       }
-      lastLabel = cb.getAttribute('data-label');
-      sumMin = 0;
-      sawRide = false;
+      rows.push('<div class="rs-row"><span>' + prev.label + ' → ' + stop.label + priceHtml + '</span><span class="rs-mode">' + icon + ' ' + text + '</span></div>');
     }
   });
-  if(rows.length === 0){
-    box.innerHTML = '<p class="rs-title">Your route</p><p class="rs-empty">Tick a few stops to see walk/ride times between them.</p>';
-  } else {
-    box.innerHTML = '<p class="rs-title">Your route</p>' + rows.join('');
-  }
+  box.innerHTML = '<p class="rs-title">Your route</p>' + rows.join('');
 }
-function renderAll(){
-  for(var d = 1; d <= 4; d++) renderDay(d);
-}
+
 document.addEventListener('change', function(e){
-  if(e.target.classList && e.target.classList.contains('stopcb')){
-    renderDay(e.target.getAttribute('data-day'));
+  var cb = e.target;
+  if(!cb.classList || !cb.classList.contains('stopcb')) return;
+  var day = cb.getAttribute('data-day');
+  var stop = {
+    id: cb.id,
+    label: cb.getAttribute('data-label'),
+    lat: parseFloat(cb.getAttribute('data-lat')),
+    lng: parseFloat(cb.getAttribute('data-lng')),
+    price: cb.getAttribute('data-price')
+  };
+  var order = clickOrder[day];
+  if(cb.checked){
+    order.push(stop);
+  } else {
+    clickOrder[day] = order.filter(function(s){ return s.id !== stop.id; });
   }
+  renderDay(day);
 });
-renderAll();
+
+for(var d = 1; d <= 4; d++) renderDay(d);
 </script>
 </body>
 </html>
-
-
